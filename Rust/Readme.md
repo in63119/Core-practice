@@ -46,3 +46,35 @@ rust 프로젝트를 생성을 하려면, `cargo new my_project`.
 - src 폴더: 여타 프레임워크의 src 폴더와 다른 것이 없다.(여기서 작업)
 - target 폴더: Node의 경우. 내가 사용하고 싶은 모듈을 설치하면 package.json에 의존성이 저장되면서, `node_modules`에 설치된다. 일반적으로 `node_modules`는 깃 레포에 굳이 올리지 않는다. rust도 같은 것이 있을까 검색해보니 역시나 이 `target` 폴더가 그 역할을 한다고 한다. `.gitignore`로 커밋 제외 시켜주었다.
 - `Cargo.toml & Cargo.lock` : `package.json(or yarn.json) & package.lock(or yarn.lock)`이라고 보면 된다.
+
+<br />
+<br />
+
+## 2. 문법
+
+### 2-1. main 함수
+
+`cargo init`을 실행시키면 `src`폴더에 `main.rs` 파일이 생기면서 안에는 main 함수가 있다.
+<br />
+
+`main`함수에는 "Hello, world!"를 화면에 출력하는 명령이 포함되어 있다.
+
+```rust
+fn main() {
+    println!("Hello, world!");
+}
+```
+
+한번 rust를 실행시켜보고 싶어서 `cargo run`을 해봤는데, 터미널에 "Hello world!" 가 출력되었다.
+<br />
+
+여기서 궁금한 것!
+<br />
+
+**분명히 함수 `main`을 실행시키는 코드가 없는데, 왜 함수 실행이 된걸까?**
+<br />
+
+: Rust 프로그램에서 `main`함수는 특별한 역할을 한다. Rust 언어의 규칙에 따라, **모든 실행 가능한 Rust 프로그램은 `main`함수로 시작한다.** 따라서 이 함수는 프로그램의 진입점(entry point)으로 작동하며, 프로그램이 실행될 때 가장 먼저 호출되는 것이다.
+<br />
+
+즉, Rust에서는 다른 언어들처럼 별도로 프로그램의 시작점을 지정할 필요가 없다. `main` 함수가 그 역할을 자동으로 수행하기 떄문이다.
